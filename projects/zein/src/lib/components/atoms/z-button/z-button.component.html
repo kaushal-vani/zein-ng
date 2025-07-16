@@ -1,1 +1,19 @@
-<p>z-button works!</p>
+<button
+  [class]="classes"
+  [disabled]="disabled || loading"
+  (click)="handleClick($event)"
+  aria-disabled="{{ disabled || loading }}"
+  type="button"
+>
+  <span class="z-btn__loader" *ngIf="loading"></span>
+
+  <ng-container *ngIf="icon && iconPosition === 'left'">
+    <i class="z-btn__icon" [class]="icon"></i>
+  </ng-container>
+
+  <span class="z-btn__label">{{ label }}</span>
+
+  <ng-container *ngIf="icon && iconPosition === 'right'">
+    <i class="z-btn__icon" [class]="icon"></i>
+  </ng-container>
+</button>
