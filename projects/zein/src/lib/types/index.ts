@@ -1,5 +1,5 @@
-export * from './button-shape.type'
-export * from './button-type.type'
+export * from './button/button-shape.type'
+export * from './button/button-type.type'
 export * from './color.type';
 export * from './icon-position.type';
 export * from './size.type';
