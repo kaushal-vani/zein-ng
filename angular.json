@@ -3,5 +3,38 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
+    "zein": {
+      "projectType": "library",
+      "root": "projects/zein",
+      "sourceRoot": "projects/zein/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:ng-packagr",
+          "options": {
+            "project": "projects/zein/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/zein/tsconfig.lib.prod.json"
+            },
+            "development": {
+              "tsConfig": "projects/zein/tsconfig.lib.json"
+            }
+          },
+          "defaultConfiguration": "production"
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "tsConfig": "projects/zein/tsconfig.spec.json",
+            "polyfills": [
+              "zone.js",
+              "zone.js/testing"
+            ]
+          }
+        }
+      }
+    }
   }
 }
