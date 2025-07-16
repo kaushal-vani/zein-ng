@@ -1,0 +1,21 @@
+<div [class]="classes">
+  <label *ngIf="label" class="z-input__label">{{ label }}</label>
+
+  <div class="z-input__control">
+    <i *ngIf="icon" class="z-input__icon" [class]="icon"></i>
+
+    <input
+      class="z-input__field"
+      [type]="type"
+      [placeholder]="placeholder"
+      [(ngModel)]="modelValue"
+      [disabled]="disabled"
+      [readonly]="readonly"
+      (input)="onInput($event)"
+      (focus)="onFocus($event)"
+      (blur)="onBlur($event)"
+    />
+  </div>
+
+  <div class="z-input__error" *ngIf="error">{{ error }}</div>
+</div>

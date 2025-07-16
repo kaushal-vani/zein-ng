@@ -2,7 +2,7 @@ import { Meta, StoryObj } from '@storybook/angular';
 import { ZButtonComponent } from './z-button.component';
 
 const meta: Meta<ZButtonComponent> = {
-  title: 'Atoms/ZButton',
+  title: 'Atoms/Z-Button',
   component: ZButtonComponent,
   tags: ['autodocs'],
   argTypes: {
