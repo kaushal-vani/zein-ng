@@ -1,57 +1,139 @@
 .z-btn {
-  font-family: inherit;
-  border: none;
-  cursor: pointer;
-  border-radius: 4px;
   display: inline-flex;
   align-items: center;
   justify-content: center;
   font-weight: 500;
-  padding: 0 1rem;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  border-radius: 0.375rem;
   transition: all 0.2s ease-in-out;
+  user-select: none;
+  position: relative;
+  text-align: center;
+  white-space: nowrap;
 
-  &--sm { font-size: 12px; height: 32px; }
-  &--md { font-size: 14px; height: 40px; }
-  &--lg { font-size: 16px; height: 48px; }
+  // Size variants
+  &--xs { font-size: 0.75rem; padding: 0.25rem 0.5rem; }
+  &--sm { font-size: 0.875rem; padding: 0.375rem 0.75rem; }
+  &--md { font-size: 1rem; padding: 0.5rem 1rem; }
+  &--lg { font-size: 1.125rem; padding: 0.75rem 1.25rem; }
+  &--xl { font-size: 1.25rem; padding: 1rem 1.5rem; }
 
-  &--primary { background: #2b6cb0; color: white; }
-  &--secondary { background: #e2e8f0; color: #1a202c; }
-  &--danger { background: #e53e3e; color: white; }
-  &--success { background: #38a169; color: white; }
-  &--warning { background: #d69e2e; color: white; }
+  // Color themes
+  &--primary { background: #007bff; color: #fff; }
+  &--secondary { background: #6c757d; color: #fff; }
+  &--success { background: #28a745; color: #fff; }
+  &--danger { background: #dc3545; color: #fff; }
+  &--warning { background: #ffc107; color: #212529; }
+  &--neutral { background: #f1f3f5; color: #000; }
 
+  // Variants
   &--outline {
     background: transparent;
-    border: 2px solid currentColor;
+    border: 1px solid currentColor;
   }
 
   &--ghost {
     background: transparent;
-    border: none;
+    color: inherit;
   }
 
-  &--disabled {
-    opacity: 0.6;
-    cursor: not-allowed;
+  &--link {
+    background: none;
+    color: blue;
+    text-decoration: underline;
+    padding: 0;
   }
 
+  &--flat {
+    background: rgba(0, 0, 0, 0.05);
+  }
+
+  // Block (full width)
   &--block {
     width: 100%;
   }
 
-  &__icon {
-    font-size: 1.2em;
-    margin: 0 0.5em;
+  // Disabled
+  &--disabled {
+    opacity: 0.6;
+    pointer-events: none;
   }
 
+  // Loading
+  &--loading {
+    pointer-events: none;
+    opacity: 0.8;
+  }
+
+  // Toggled
+  &--toggled {
+    box-shadow: 0 0 0 2px currentColor inset;
+  }
+
+  // Icon-only
+  &--icon-only {
+    padding: 0.5rem;
+    .z-btn__label {
+      display: none;
+    }
+  }
+
+  // Shape
+  &--shape-rounded {
+    border-radius: 0.375rem;
+  }
+
+  &--shape-square {
+    border-radius: 0;
+  }
+
+  &--shape-pill {
+    border-radius: 9999px;
+  }
+
+  // Theme
+  &--theme-light {
+    filter: brightness(1.05);
+  }
+
+  &--theme-dark {
+    filter: brightness(0.85);
+  }
+
+  &--theme-auto {
+    // optional: use prefers-color-scheme or app theme class
+  }
+
+  // Icon
+  &__icon {
+    font-size: 1em;
+    display: inline-block;
+
+    &--left {
+      margin-right: 0.5rem;
+    }
+
+    &--right {
+      margin-left: 0.5rem;
+    }
+  }
+
+  // Label
+  &__label {
+    display: inline-block;
+  }
+
+  // Loader
   &__loader {
-    width: 16px;
-    height: 16px;
+    width: 1rem;
+    height: 1rem;
     border: 2px solid #fff;
     border-top-color: transparent;
     border-radius: 50%;
-    animation: spin 0.7s linear infinite;
-    margin-right: 0.5em;
+    animation: spin 0.6s linear infinite;
+    margin-right: 0.5rem;
   }
 }
 

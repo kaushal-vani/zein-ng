@@ -1,104 +1,120 @@
 import { Meta, StoryObj } from '@storybook/angular';
 import { ZButtonComponent } from './z-button.component';
-import { moduleMetadata } from '@storybook/angular';
 
 const meta: Meta<ZButtonComponent> = {
-  title: 'Components/Atoms/Z-Button',
+  title: 'Atoms/ZButton',
   component: ZButtonComponent,
-  decorators: [
-    moduleMetadata({
-      imports: [], // Add any shared modules if needed
-    }),
-  ],
+  tags: ['autodocs'],
   argTypes: {
-    color: {
-      control: 'select',
-      options: ['primary', 'secondary', 'danger', 'success', 'warning', 'neutral'],
-    },
     size: {
       control: 'select',
       options: ['xs', 'sm', 'md', 'lg', 'xl'],
+    },
+    color: {
+      control: 'select',
+      options: ['primary', 'secondary', 'success', 'danger', 'warning', 'neutral'],
     },
     variant: {
       control: 'select',
       options: ['solid', 'outline', 'ghost', 'link', 'flat'],
     },
-    iconPosition: {
+    shape: {
       control: 'select',
+      options: ['rounded', 'square', 'pill'],
+    },
+    iconPosition: {
+      control: 'radio',
       options: ['left', 'right'],
     },
-  },
-  args: {
-    label: 'Click Me',
-    size: 'md',
-    color: 'primary',
-    variant: 'solid',
-    disabled: false,
-    fullWidth: false,
-    loading: false,
+    theme: {
+      control: 'radio',
+      options: ['auto', 'light', 'dark'],
+    },
+    type: {
+      control: 'radio',
+      options: ['button', 'submit', 'reset'],
+    },
+    iconOnly: {
+      control: 'boolean',
+    },
+    fullWidth: {
+      control: 'boolean',
+    },
+    disabled: {
+      control: 'boolean',
+    },
+    loading: {
+      control: 'boolean',
+    },
+    toggleable: {
+      control: 'boolean',
+    },
+    toggledOn: {
+      control: 'boolean',
+    },
+    label: {
+      control: 'text',
+    },
+    icon: {
+      control: 'text',
+    },
   },
 };
 
 export default meta;
 type Story = StoryObj<ZButtonComponent>;
 
-export const Primary: Story = {
+export const Default: Story = {
   args: {
-    label: 'Primary Button',
+    label: 'Click Me',
+    size: 'md',
     color: 'primary',
     variant: 'solid',
+    shape: 'rounded',
+    theme: 'auto',
+    iconOnly: false,
+    fullWidth: false,
+    disabled: false,
+    loading: false,
+    toggleable: false,
+    toggledOn: false,
+    icon: '',
+    iconPosition: 'left',
   },
 };
 
-export const Outline: Story = {
+export const IconOnly: Story = {
   args: {
-    label: 'Outline Button',
-    color: 'primary',
-    variant: 'outline',
+    ...Default.args,
+    icon: 'fa fa-star',
+    iconOnly: true,
+    label: '', // optional if iconOnly true
   },
 };
 
-export const Ghost: Story = {
+export const Toggled: Story = {
   args: {
-    label: 'Ghost Button',
-    color: 'secondary',
-    variant: 'ghost',
-  },
-};
-
-export const Disabled: Story = {
-  args: {
-    label: 'Disabled Button',
-    disabled: true,
+    ...Default.args,
+    toggleable: true,
+    toggledOn: true,
+    label: 'Toggled',
   },
 };
 
 export const Loading: Story = {
   args: {
-    label: 'Loading...',
+    ...Default.args,
     loading: true,
+    label: 'Loading...',
   },
 };
 
-export const WithIconLeft: Story = {
+export const PillDark: Story = {
   args: {
-    label: 'Save',
-    icon: 'fa fa-save',
-    iconPosition: 'left',
-  },
-};
-
-export const WithIconRight: Story = {
-  args: {
-    label: 'Next',
-    icon: 'fa fa-arrow-right',
-    iconPosition: 'right',
-  },
-};
-
-export const FullWidth: Story = {
-  args: {
-    label: 'Full Width',
-    fullWidth: true,
+    ...Default.args,
+    shape: 'pill',
+    theme: 'dark',
+    label: 'Dark Theme',
+    color: 'secondary',
   },
 };

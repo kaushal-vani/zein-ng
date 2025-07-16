@@ -1,19 +1,22 @@
 <button
   [class]="classes"
+  [attr.aria-label]="ariaLabel || label"
+  [attr.aria-disabled]="disabled || loading"
   [disabled]="disabled || loading"
+  [type]="type"
   (click)="handleClick($event)"
-  aria-disabled="{{ disabled || loading }}"
-  type="button"
+  (focus)="focused.emit($event)"
+  (blur)="blurred.emit($event)"
 >
   <span class="z-btn__loader" *ngIf="loading"></span>
 
   <ng-container *ngIf="icon && iconPosition === 'left'">
-    <i class="z-btn__icon" [class]="icon"></i>
+    <i class="z-btn__icon z-btn__icon--left" [class]="icon"></i>
   </ng-container>
 
   <span class="z-btn__label">{{ label }}</span>
 
   <ng-container *ngIf="icon && iconPosition === 'right'">
-    <i class="z-btn__icon" [class]="icon"></i>
+    <i class="z-btn__icon z-btn__icon--right" [class]="icon"></i>
   </ng-container>
 </button>
