@@ -1,5 +1,14 @@
 import { CommonModule } from '@angular/common';
 import { Component, EventEmitter, Input, Output } from '@angular/core';
+import {
+  ButtonShape,
+  ButtonType,
+  Color,
+  IconPosition,
+  Size,
+  Theme,
+  Variant,
+} from '../../../types';
 
 @Component({
   selector: 'z-button',
@@ -9,35 +18,31 @@ import { Component, EventEmitter, Input, Output } from '@angular/core';
   styleUrls: ['./z-button.component.scss'],
 })
 export class ZButtonComponent {
+  @Input() ariaLabel?: string;
+  @Input() color: Color = 'primary';
+  @Input() customClass?: string;
+  @Input() icon?: string;
+  @Input() iconPosition: IconPosition = 'left';
   @Input() label: string = 'Button';
-  @Input() size: 'xs' | 'sm' | 'md' | 'lg' | 'xl' = 'md';
-  @Input() color: 'primary' | 'secondary' | 'danger' | 'success' | 'warning' | 'neutral' = 'primary';
-  @Input() variant: 'solid' | 'outline' | 'ghost' | 'link' | 'flat' = 'solid';
+  @Input() shape: ButtonShape = 'rounded';
+  @Input() size: Size = 'md';
+  @Input() theme: Theme = 'auto';
+  @Input() type: ButtonType = 'button';
+  @Input() variant: Variant = 'solid';
 
   @Input() disabled: boolean = false;
-  @Input() loading: boolean = false;
   @Input() fullWidth: boolean = false;
-
-  @Input() icon?: string;
-  @Input() iconPosition: 'left' | 'right' = 'left';
-
+  @Input() iconOnly: boolean = false;
+  @Input() loading: boolean = false;
   @Input() toggleable: boolean = false;
   @Input() toggledOn: boolean = false;
-
-  @Input() ariaLabel?: string;
-  @Input() type: 'button' | 'submit' | 'reset' = 'button';
-
-  @Input() shape: 'rounded' | 'square' | 'pill' = 'rounded';
-  @Input() iconOnly: boolean = false;
-  @Input() customClass?: string;
-  @Input() theme: 'light' | 'dark' | 'auto' = 'auto';
 
   @Output() clicked = new EventEmitter<Event>();
   @Output() focused = new EventEmitter<FocusEvent>();
   @Output() blurred = new EventEmitter<FocusEvent>();
   @Output() toggled = new EventEmitter<boolean>();
 
-handleClick(event: Event) {
+  handleClick(event: Event) {
     if (this.disabled || this.loading) return;
 
     this.clicked.emit(event);
